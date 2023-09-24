@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using APIShoppingCart.Models;
 using APIShoppingCart.Repositories;
+using ApiShoppingCart.Repositories;
 
 namespace ApiShoppingCart.Controllers
 
@@ -20,6 +21,13 @@ namespace ApiShoppingCart.Controllers
         public async Task<bool> PlaceOrder(Order order)
         {
             return await cartRepository.PlaceOrder(order);
+        }
+
+        [HttpGet]
+        [Route("/GetOrders")]
+        public async Task<IEnumerable<Order>> GetCustomers()
+        {
+            return await cartRepository.GetOrders();
         }
     }
 }
